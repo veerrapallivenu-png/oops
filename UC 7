@@ -1,0 +1,46 @@
+import java.util.*;
+
+public class OOPSBannerApp {
+
+    static class CharacterPattern {
+        private char character;
+        private String[] pattern;
+
+        public CharacterPattern(char character, String[] pattern) {
+            this.character = character;
+            this.pattern = pattern;
+        }
+        public char getCharacter() {
+            return character;
+        }
+
+        public String[] getPattern() {
+            return pattern;
+        }
+    }
+
+    static class CharacterPatternMap {
+        private Map<Character, CharacterPattern> patternMap;
+
+        public CharacterPatternMap() {
+            patternMap = new HashMap<>();
+            loadPatterns();
+        }
+
+        private void loadPatterns() {
+
+            patternMap.put('O', new CharacterPattern('O', new String[]{
+                    " * ",
+                    "*   *",
+                    "*   *",
+                    "*   *",
+                    " * "
+            }));
+
+            patternMap.put('P', new CharacterPattern('P', new String[]{
+                    "** ",
+                    "*   *",
+                    "** ",
+                    "*    ",
+                    "*    "
+            }));
