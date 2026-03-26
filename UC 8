@@ -1,0 +1,62 @@
+import java.util.*;
+
+class BannerApp {
+
+    public static Map<Character, String[]> createPatternMap() {
+
+        Map<Character, String[]> patternMap = new HashMap<>();
+
+        patternMap.put('O', new String[]{
+                " * ",
+                "*     *",
+                "*     *",
+                "*     *",
+                " * "
+        });
+
+        patternMap.put('P', new String[]{
+                "** ",
+                "*     *",
+                "** ",
+                "*      ",
+                "*      "
+        });
+
+        patternMap.put('S', new String[]{
+                " * ",
+                "*      ",
+                " * ",
+                "      *",
+                " * "
+        });
+
+        return patternMap;
+    }
+    public static void renderBanner(String word, Map<Character, String[]> patternMap) {
+
+        int height = 5; 
+
+        for (int row = 0; row < height; row++) {
+            for (char ch : word.toCharArray()) {
+
+                String[] pattern = patternMap.get(Character.toUpperCase(ch));
+
+                if (pattern != null) {
+                    System.out.print(pattern[row] + "  ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Map<Character, String[]> patternMap = createPatternMap();
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a word (O, P, S supported): ");
+        String word = sc.nextLine();
+
+        renderBanner(word, patternMap);
+    }
+}
